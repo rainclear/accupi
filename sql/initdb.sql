@@ -56,6 +56,14 @@ CREATE TABLE "Transactions" (
   "notes" varchar(512)
 );
 
+CREATE INDEX ON "Accounts" ("accountname");
+
+CREATE INDEX ON "Transactions" ("fromaccount_id");
+
+CREATE INDEX ON "Transactions" ("toaccount_id");
+
+CREATE INDEX ON "Transactions" ("fromaccount_id", "toaccount_id");
+
 ALTER TABLE "Accounts" ADD FOREIGN KEY ("owner_id") REFERENCES "Owners" ("id");
 
 ALTER TABLE "Accounts" ADD FOREIGN KEY ("currency_id") REFERENCES "Currencies" ("id");
