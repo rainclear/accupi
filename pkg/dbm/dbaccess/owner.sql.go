@@ -3,7 +3,7 @@
 //   sqlc v1.28.0
 // source: owner.sql
 
-package sqlc
+package dbaccess
 
 import (
 	"context"

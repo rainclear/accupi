@@ -3,7 +3,7 @@
 //   sqlc v1.28.0
 // source: accounttype.sql
 
-package sqlc
+package dbaccess
 
 import (
 	"context"
