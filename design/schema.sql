@@ -17,7 +17,7 @@ CREATE TABLE "AccountTypes" (
 
 CREATE TABLE "AccountCategories" (
   "id" bigserial PRIMARY KEY,
-  "AccountCategory" varchar(256) UNIQUE NOT NULL
+  "accountcategory" varchar(256) UNIQUE NOT NULL
 );
 
 CREATE TABLE "Accounts" (
