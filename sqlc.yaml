@@ -5,6 +5,6 @@ sql:
     schema: "./design/schema.sql"
     gen:
       go:
-        package: "sqlc"
-        out: "./pkg/dbm/sqlc"
+        package: "dbaccess"
+        out: "./pkg/dbm/dbaccess"
         sql_package: "pgx/v5"
