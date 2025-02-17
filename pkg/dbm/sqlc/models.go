@@ -25,7 +25,7 @@ type Account struct {
 
 type AccountCategory struct {
 	ID              int64
-	AccountCategory string
+	Accountcategory string
 }
 
 type AccountType struct {
