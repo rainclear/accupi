@@ -66,6 +66,22 @@ func (q *Queries) CreateAccount(ctx context.Context, arg CreateAccountParams) (A
 	return i, err
 }
 
+const decreaseAccountBalance = `-- name: DecreaseAccountBalance :exec
+UPDATE "Accounts"
+  set "balance" = "balance" - $1
+WHERE id = $2
+`
+
+type DecreaseAccountBalanceParams struct {
+	Amount pgtype.Numeric
+	ID     int64
+}
+
+func (q *Queries) DecreaseAccountBalance(ctx context.Context, arg DecreaseAccountBalanceParams) error {
+	_, err := q.db.Exec(ctx, decreaseAccountBalance, arg.Amount, arg.ID)
+	return err
+}
+
 const deleteAccount = `-- name: DeleteAccount :exec
 DELETE FROM "Accounts"
 WHERE id = $1
@@ -99,6 +115,22 @@ func (q *Queries) GetAccount(ctx context.Context, id int64) (Account, error) {
 		&i.Notes,
 	)
 	return i, err
+}
+
+const increaseAccountBalance = `-- name: IncreaseAccountBalance :exec
+UPDATE "Accounts"
+  set "balance" = "balance" + $1
+WHERE id = $2
+`
+
+type IncreaseAccountBalanceParams struct {
+	Amount pgtype.Numeric
+	ID     int64
+}
+
+func (q *Queries) IncreaseAccountBalance(ctx context.Context, arg IncreaseAccountBalanceParams) error {
+	_, err := q.db.Exec(ctx, increaseAccountBalance, arg.Amount, arg.ID)
+	return err
 }
 
 const listAccounts = `-- name: ListAccounts :many

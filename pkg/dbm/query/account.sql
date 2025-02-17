@@ -34,6 +34,16 @@ UPDATE "Accounts"
   set "balance" = $2
 WHERE id = $1;
 
+-- name: IncreaseAccountBalance :exec
+UPDATE "Accounts"
+  set "balance" = "balance" + sqlc.arg(amount)
+WHERE id = sqlc.arg(id);
+
+-- name: DecreaseAccountBalance :exec
+UPDATE "Accounts"
+  set "balance" = "balance" - sqlc.arg(amount)
+WHERE id = sqlc.arg(id);
+
 -- name: DeleteAccount :exec
 DELETE FROM "Accounts"
 WHERE id = $1;
