@@ -187,3 +187,19 @@ func (q *Queries) UpdateAccount(ctx context.Context, arg UpdateAccountParams) er
 	)
 	return err
 }
+
+const updateAccountBalance = `-- name: UpdateAccountBalance :exec
+UPDATE "Accounts"
+  set "balance" = $2
+WHERE id = $1
+`
+
+type UpdateAccountBalanceParams struct {
+	ID      int64
+	Balance pgtype.Numeric
+}
+
+func (q *Queries) UpdateAccountBalance(ctx context.Context, arg UpdateAccountBalanceParams) error {
+	_, err := q.db.Exec(ctx, updateAccountBalance, arg.ID, arg.Balance)
+	return err
+}

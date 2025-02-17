@@ -29,6 +29,11 @@ UPDATE "Accounts"
   "notes" = $12
 WHERE id = $1;
 
+-- name: UpdateAccountBalance :exec
+UPDATE "Accounts"
+  set "balance" = $2
+WHERE id = $1;
+
 -- name: DeleteAccount :exec
 DELETE FROM "Accounts"
 WHERE id = $1;
