@@ -3,7 +3,7 @@
 //   sqlc v1.28.0
 // source: accountcategory.sql
 
-package dbaccess
+package dbm
 
 import (
 	"context"
