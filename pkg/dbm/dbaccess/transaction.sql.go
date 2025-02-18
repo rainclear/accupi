@@ -3,7 +3,7 @@
 //   sqlc v1.28.0
 // source: transaction.sql
 
-package dbm
+package dbaccess
 
 import (
 	"context"

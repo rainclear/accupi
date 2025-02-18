@@ -3,7 +3,7 @@
 //   sqlc v1.28.0
 // source: currency.sql
 
-package dbm
+package dbaccess
 
 import (
 	"context"
