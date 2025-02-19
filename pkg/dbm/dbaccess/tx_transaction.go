@@ -2,6 +2,7 @@ package dbm
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/jackc/pgx/v5/pgtype"
 )
@@ -25,6 +26,10 @@ type TransactionTxResult struct {
 
 func (book *Book) TransactionTx(ctx context.Context, arg TransactionTxParams) (TransactionTxResult, error) {
 	var result TransactionTxResult
+
+	if arg.ToaccountID == arg.FromaccountID {
+		return result, fmt.Errorf("tx err: ToAccountID cannot be the same as the FromAccountID")
+	}
 
 	err := book.execTx(ctx, func(q *Queries) error {
 		var exErr error
